@@ -532,3 +532,42 @@ section[id] {
     grid-template-columns: 1fr !important;
   }
 }
+/* ==========================================================================
+   LOGOS DE L'EMPIRE FLOTTANTS (Agrandis et recentrés)
+   ========================================================================== */
+
+.logo-flottant {
+  position: fixed;
+  top: 50%; /* Positionne le haut de l'image au milieu vertical de l'écran */
+  transform: translateY(
+    -50%
+  ); /* Ajuste l'alignement pour que l'image soit parfaitement centrée */
+  width: 130px; /* Logos plus gros */
+  height: auto;
+  z-index: 50; /* Reste visible mais passe sous la navbar */
+  pointer-events: none; /* Permet de cliquer à travers si besoin */
+  opacity: 0.4; /* Semi-transparent pour ne pas gêner la lecture, devient net au survol */
+  transition: opacity 0.3s ease;
+}
+
+/* Éclaire le logo quand la souris passe dans sa zone */
+.logo-flottant:hover {
+  opacity: 0.8;
+}
+
+/* Décollé du bord gauche (poussé vers l'intérieur) */
+.empire-gauche {
+  left: 130px;
+}
+
+/* Décollé du bord droit (poussé vers l'intérieur) */
+.empire-droite {
+  right: 130px;
+}
+
+/* --- Masquage sur les petits écrans (ajusté pour la nouvelle taille) --- */
+@media (max-width: 1350px) {
+  .logo-flottant {
+    display: none !important; /* Cache les logos pour éviter les chevauchements avec le texte */
+  }
+}
