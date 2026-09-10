@@ -1,0 +1,534 @@
+/* ==========================================================================
+   CODEX CASTE DES RAVAGEURS — FEUILLE DE STYLE COMPLETE
+   ========================================================================== */
+
+@import url("https://googleapis.com");
+
+/* --------------------------------------------------------------------------
+   1. VARIABLES
+   -------------------------------------------------------------------------- */
+:root {
+  --bg: #121014;
+  --surface: #1c191d;
+  --surface-alt: #242024;
+  --border: #35303a;
+
+  --text: #ece9ea;
+  --text-muted: #aba3a7;
+  --text-faint: #756e76;
+
+  --accent: #d1323f; /* Rouge sith */
+  --accent-2: #8c2f39; /* Bordeaux sombre */
+  --accent-3: #d0954a; /* Ambre */
+
+  --font-display: "Archivo", sans-serif;
+  --font-body: "Source Sans 3", sans-serif;
+
+  --prose-width: 720px;
+  --grid-width: 1040px;
+  --radius: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   2. REGLAGES DE BASE
+   -------------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.main-content {
+  max-width: var(--grid-width);
+  margin: 0 auto;
+  padding: 88px 24px 100px 24px;
+}
+
+::selection {
+  background: rgba(209, 50, 63, 0.3);
+  color: var(--text);
+}
+
+/* --------------------------------------------------------------------------
+   3. TYPOGRAPHIE & TITRES
+   -------------------------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-display);
+  color: var(--text);
+}
+
+h1 {
+  text-align: center;
+  margin: 0 auto 16px auto;
+  max-width: var(--prose-width);
+  font-size: clamp(1.6rem, 5vw + 0.8rem, 2.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+h2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  max-width: var(--prose-width);
+  margin: 48px auto 16px auto;
+  font-size: clamp(1.15rem, 2.5vw + 0.7rem, 1.4rem);
+  font-weight: 700;
+}
+
+/* Le petit rectangle rouge décoratif devant les titres h2 globaux */
+h2::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--accent);
+  flex-shrink: 0;
+}
+
+h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+p {
+  max-width: var(--prose-width);
+  margin: 0 auto 16px auto;
+  color: var(--text-muted);
+}
+
+strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   4. NAVIGATION (Compacte & alignée à gauche de l'écran)
+   -------------------------------------------------------------------------- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 5%; /* Aligné vers la gauche */
+  width: max-content; /* Largeur réduite */
+  padding: 6px 20px; /* Plus fine en hauteur */
+  background-color: rgba(18, 16, 20, 0.94);
+  border: 1px solid var(--border);
+  border-radius: 0 0 8px 8px;
+  backdrop-filter: blur(8px);
+  z-index: 100;
+}
+
+.menuNav {
+  display: flex;
+  justify-content: flex-start;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.liNav {
+  list-style: none;
+}
+
+.liNav a {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-radius: 999px;
+  white-space: nowrap;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.liNav a:hover,
+.liNav a:focus-visible {
+  color: var(--accent);
+  background-color: var(--surface-alt);
+}
+
+/* --------------------------------------------------------------------------
+   5. PRESENTATION & IMAGES (Style Portrait d'Einhar Centré)
+   -------------------------------------------------------------------------- */
+.photoEinhar {
+  display: block;
+  width: 220px;
+  height: auto;
+  margin: 0 auto 32px auto; /* Centrage horizontal parfait */
+  padding: 5px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+/* --------------------------------------------------------------------------
+   6. GRILLE DES GRANDES FIGURES (Style fiches .jedi-noir / .figure)
+   -------------------------------------------------------------------------- */
+.figures-sith {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+  max-width: var(--grid-width);
+  margin: 20px auto 0 auto;
+}
+
+.figure {
+  padding: 20px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent-3); /* Bordure ambre sur le côté gauche */
+  border-radius: var(--radius);
+}
+
+.figure h3 {
+  color: var(--accent-3);
+  font-size: 1.15rem;
+  margin-top: 0;
+}
+
+.figure p {
+  max-width: none;
+  margin: 0 0 12px 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.figure p:last-child {
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   7. BLOC EQUIPEMENT (Style fiches d'alignement .pair)
+   -------------------------------------------------------------------------- */
+.pair {
+  max-width: var(--prose-width);
+  margin: 20px auto 0 auto;
+  padding: 24px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent); /* Bordure rouge sith sur le dessus */
+  border-radius: var(--radius);
+}
+
+.pair p {
+  max-width: none;
+  margin-bottom: 16px;
+}
+
+.pair p:last-child {
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   8. RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 860px) {
+  .main-content {
+    padding-top: 104px;
+  }
+  .figures-sith {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+/* Force l'affichage des cartes de représentation 2 par 2 */
+.representation-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 16px !important;
+}
+
+.representation-grid .pair {
+  border-top: 3px solid var(--accent-2) !important; /* Reprend la bordure rouge fine du haut */
+  border-left: 1px solid var(--border) !important; /* Remet la bordure normale sur les côtés */
+}
+
+/* Version mobile : repasse sur une seule colonne pour que ça reste lisible sur téléphone */
+@media (max-width: 700px) {
+  .representation-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Force l'affichage des cartes de rôles 2 par 2 */
+.roles-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 16px !important;
+}
+
+.roles-grid .pair {
+  border-top: 3px solid var(--accent-2) !important; /* Bordure rouge fine du haut */
+  border-left: 1px solid var(--border) !important; /* Bordure normale sur les côtés */
+}
+
+/* Version mobile */
+@media (max-width: 700px) {
+  .roles-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Force l'affichage des cartes de titres honorifiques 2 par 2 */
+.titres-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 16px !important;
+}
+
+.titres-grid .pair {
+  border-top: 3px solid var(--accent-2) !important; /* Bordure rouge fine du haut */
+  border-left: 1px solid var(--border) !important; /* Bordure normale sur les côtés */
+}
+
+/* Version mobile */
+@media (max-width: 700px) {
+  .titres-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. NAVIGATION (Style Codex Complet)
+   -------------------------------------------------------------------------- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px 20px;
+  background-color: rgba(18, 16, 20, 0.94);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+}
+
+.menuNav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.liNav {
+  list-style: none;
+}
+
+.liNav a {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-radius: 999px;
+  white-space: nowrap;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.liNav a:hover,
+.liNav a:focus-visible {
+  color: var(--accent);
+  background-color: var(--surface-alt);
+}
+
+/* Gestion de l'espace pour éviter que la navbar fixe ne cache les titres */
+h1[id],
+h2[id],
+section[id] {
+  scroll-margin-top: 84px;
+}
+
+/* --- Adaptation mobile automatique (≤ 700px) --- */
+@media (max-width: 700px) {
+  .menuNav {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .liNav a {
+    flex-shrink: 0;
+  }
+}
+
+/* ==========================================================================
+   STYLE PARCHEMIN POUR LE CODE ET LE SERMENT
+   ========================================================================== */
+
+.poeme-ravageur {
+  max-width: var(--prose-width);
+  margin: 32px auto;
+  padding: 32px 40px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-align: center; /* Centre tout le texte */
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4); /* Effet d'ombrage interne style parchemin */
+}
+
+/* Style de chaque ligne du poème */
+.poeme-ravageur p {
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-style: italic; /* Met le texte en italique comme sur l'image */
+  line-height: 1.8;
+  margin: 0 0 16px 0; /* Espace entre chaque phrase */
+  max-width: none;
+}
+
+/* Supprime la marge sur la toute dernière phrase */
+.poeme-ravageur p:last-child {
+  margin-bottom: 0;
+}
+
+/* Aligne le texte et l'image côte à côte dans le bloc équipement */
+.equipement-flex {
+  display: flex !important;
+  align-items: center; /* Centre verticalement le texte et l'image */
+  gap: 24px; /* Espace entre le texte et l'image */
+}
+
+/* Gère la largeur de la colonne textuelle */
+.equipement-texte {
+  flex: 1; /* Prend tout l'espace restant disponible */
+}
+
+.equipement-texte p {
+  max-width: none !important; /* Permet au texte d'occuper sa colonne */
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Style de l'image à droite */
+.equipement-img {
+  width: 200px; /* Ajustez la largeur de l'image selon vos besoins */
+  height: auto;
+  object-fit: cover;
+  border-radius: 6px; /* Optionnel : léger arrondi sur les coins de l'image */
+  border: 1px solid var(--border); /* Optionnel : rappelle la bordure du site */
+}
+
+/* Version mobile : l'image repasse sous le texte si l'écran est trop petit */
+@media (max-width: 700px) {
+  .equipement-flex {
+    flex-direction: column !important;
+  }
+  .equipement-img {
+    width: 100%; /* L'image prend toute la largeur sur mobile */
+    max-width: 250px;
+  }
+}
+/* Aligne le texte et l'image à l'intérieur de chaque grande figure */
+.figure-flex {
+  display: flex !important;
+  align-items: center; /* Centre verticalement le texte et l'image */
+  gap: 20px; /* Espace entre le bloc texte et l'image */
+}
+
+/* Permet au texte d'occuper sa colonne */
+.figure-texte {
+  flex: 1;
+}
+
+.figure-texte p {
+  max-width: none !important;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Style de l'image de droite */
+.figure-img {
+  width: 140px; /* Largeur adaptée pour rester discret dans la carte */
+  height: auto;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+/* Gestion mobile : l'image bascule sous le texte sur petit écran */
+@media (max-width: 850px) {
+  .figure-flex {
+    flex-direction: column !important;
+    align-items: center;
+  }
+  .figure-img {
+    width: 100%;
+    max-width: 160px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. PRESENTATION & IMAGES (Version Intégrale & Agrandie)
+   -------------------------------------------------------------------------- */
+.photoEinhar {
+  display: block !important;
+  width: 340px !important; /* Image plus grande */
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto 48px auto !important; /* Centrage parfait et marge aérée en bas */
+  padding: 5px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+/* Style de la mention de l'auteur intégrée au H1 */
+.title1 .auteur-caste {
+  display: block; /* Force le retour à la ligne automatique */
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--text-muted);
+  margin-top: 10px; /* Espace discret sous le titre principal */
+  letter-spacing: 1px;
+  opacity: 0.85;
+}
+/* Force l'affichage des cartes de prérequis 2 par 2 */
+.prerequis-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 16px !important;
+}
+
+.prerequis-grid .pair {
+  border-top: 3px solid var(--accent-2) !important; /* Bordure fine bordeaux style Codex */
+  border-left: 1px solid var(--border) !important;
+}
+
+/* Version responsive pour mobile */
+@media (max-width: 700px) {
+  .prerequis-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
