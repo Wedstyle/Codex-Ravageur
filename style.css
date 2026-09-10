@@ -319,7 +319,7 @@ strong {
   left: 0;
   width: 100%;
   padding: 12px 20px;
-  background-color: rgba(18, 16, 20, 0.94);
+  background-color: #0b0a0c !important; /* Même noir profond que les bandes latérales */
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(8px);
   z-index: 100;
@@ -570,5 +570,37 @@ section[id] {
 @media (max-width: 1550px) {
   .logo-flottant {
     display: none !important; /* Disparaît proprement si la fenêtre est trop étroite */
+  }
+}
+/* ==========================================================================
+   BANDES NOIRES LATÉRALES DÉCORATIVES (Cadre de site fixe)
+   ========================================================================== */
+
+.bande-laterale-decor {
+  position: fixed !important;
+  top: 0 !important;
+  height: 100vh !important;
+  width: 260px !important; /* Largeur des bandes noires sur les côtés */
+  background-color: #0b0a0c !important; /* Noir profond plus sombre que le fond du site */
+  z-index: 40 !important; /* Reste sous la navbar (100) mais au-dessus du fond */
+  pointer-events: none; /* Permet de cliquer à travers si besoin */
+}
+
+/* Positionnement et bordure de la bande gauche */
+.bande-gauche {
+  left: 0 !important;
+  border-right: 1px solid var(--border) !important; /* Ligne fine de séparation avec le site */
+}
+
+/* Positionnement et bordure de la bande droite */
+.bande-droite {
+  right: 0 !important;
+  border-left: 1px solid var(--border) !important; /* Ligne fine de séparation avec le site */
+}
+
+/* --- Masquage automatique pour protéger la lecture sur petit écran --- */
+@media (max-width: 1600px) {
+  .bande-laterale-decor {
+    display: none !important; /* Disparaît proprement si l'écran est trop étroit */
   }
 }
