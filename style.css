@@ -533,41 +533,42 @@ section[id] {
   }
 }
 /* ==========================================================================
-   LOGOS DE L'EMPIRE FLOTTANTS (Agrandis et recentrés)
+   LOGOS DE L'EMPIRE FLOTTANTS (Version XXL rapprochée des bords)
    ========================================================================== */
 
 .logo-flottant {
-  position: fixed;
-  top: 50%; /* Positionne le haut de l'image au milieu vertical de l'écran */
-  transform: translateY(
-    -50%
-  ); /* Ajuste l'alignement pour que l'image soit parfaitement centrée */
-  width: 130px; /* Logos plus gros */
-  height: auto;
-  z-index: 50; /* Reste visible mais passe sous la navbar */
-  pointer-events: none; /* Permet de cliquer à travers si besoin */
-  opacity: 0.4; /* Semi-transparent pour ne pas gêner la lecture, devient net au survol */
+  position: fixed !important;
+  top: 50% !important; /* Centre verticalement */
+  transform: translateY(-50%) !important;
+  width: 220px !important; /* Logos beaucoup plus grands (XXL) */
+  height: auto !important;
+  z-index: 50 !important; /* Passe au-dessus du fond mais sous la navbar */
+  pointer-events: none !important; /* Permet de cliquer à travers si besoin */
+  opacity: 0.4 !important; /* Rendu semi-transparent pour ne pas étouffer le texte */
+  display: block !important;
   transition: opacity 0.3s ease;
 }
 
 /* Éclaire le logo quand la souris passe dans sa zone */
 .logo-flottant:hover {
-  opacity: 0.8;
+  opacity: 0.8 !important;
 }
 
-/* Décollé du bord gauche (poussé vers l'intérieur) */
+/* Rapproché du bord gauche */
 .empire-gauche {
-  left: 130px;
+  left: 20px !important;
+  right: auto !important;
 }
 
-/* Décollé du bord droit (poussé vers l'intérieur) */
+/* Rapproché du bord droit */
 .empire-droite {
-  right: 130px;
+  right: 20px !important;
+  left: auto !important;
 }
 
-/* --- Masquage sur les petits écrans (ajusté pour la nouvelle taille) --- */
-@media (max-width: 1350px) {
+/* --- Masquage adapté pour la taille XXL (évite les collisions avec le texte) --- */
+@media (max-width: 1550px) {
   .logo-flottant {
-    display: none !important; /* Cache les logos pour éviter les chevauchements avec le texte */
+    display: none !important; /* Disparaît proprement si la fenêtre est trop étroite */
   }
 }
